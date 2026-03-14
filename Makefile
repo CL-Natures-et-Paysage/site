@@ -1,9 +1,15 @@
-.PHONY: up install
+UID := $(shell id -u)
+GID := $(shell id -g)
 
-up: install
-	docker compose up
+.PHONY: up install build
 
-node_modules: npm_install
+start: build up npm_install
+
+build:
+	UID=$(UID) GID=$(GID) docker compose build --build-arg UID=$(UID) --build-arg GID=$(GID)
+
+up:
+	docker compose up -d
 
 npm_install:
 	docker compose exec app npm install
