@@ -2,8 +2,15 @@ backend:
   name: git-gateway
   branch: main
 
+local_backend: true
+
+editor:
+  preview: false
+
 media_folder: "public/uploads"
 public_folder: "/uploads"
+
+locale: 'fr'
 
 collections:
   - name: "pages"
@@ -11,6 +18,7 @@ collections:
     folder: "src/pages"
     create: true
     slug: "{{slug}}"
+    preview_path: "/{{slug}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Slug", name: "slug", widget: "string"}
@@ -18,3 +26,91 @@ collections:
       - {label: "Featured Image", name: "featured_image", widget: "image", required: false}
       - {label: "Published", name: "published", widget: "boolean", default: true}
       - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "homepage"
+    label: "Page d'accueil"
+    preview_path: "/"
+    files:
+      - name: "homepage"
+        label: "Page d'accueil"
+        file: "src/data/homepage.json"
+        extension: json
+        format: json
+        fields:
+          - label: "Navigation"
+            name: "nav"
+            widget: "object"
+            fields:
+              - {label: "Logo / Nom", name: "logo", widget: "string"}
+              - label: "Liens"
+                name: "links"
+                widget: "list"
+                fields:
+                  - {label: "Texte", name: "label", widget: "string"}
+                  - {label: "URL", name: "url", widget: "string"}
+              - {label: "Bouton CTA", name: "cta", widget: "string"}
+
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {label: "Titre principal", name: "title", widget: "string"}
+              - {label: "Sous-titre", name: "subtitle", widget: "string"}
+              - {label: "Bouton principal", name: "cta_primary", widget: "string"}
+              - {label: "Bouton secondaire", name: "cta_secondary", widget: "string"}
+              - {label: "Image de fond (URL)", name: "background_image", widget: "image"}
+
+          - label: "Services"
+            name: "services"
+            widget: "object"
+            fields:
+              - {label: "Titre", name: "title", widget: "string"}
+              - {label: "Sous-titre", name: "subtitle", widget: "string"}
+              - label: "Services"
+                name: "items"
+                widget: "list"
+                fields:
+                  - {label: "Titre", name: "title", widget: "string"}
+                  - {label: "Description", name: "description", widget: "text"}
+
+          - label: "À propos"
+            name: "about"
+            widget: "object"
+            fields:
+              - {label: "Titre", name: "title", widget: "string"}
+              - label: "Paragraphes"
+                name: "paragraphs"
+                widget: "list"
+                field: {label: "Paragraphe", name: "paragraph", widget: "text"}
+              - label: "Statistiques"
+                name: "stats"
+                widget: "list"
+                fields:
+                  - {label: "Valeur", name: "value", widget: "string"}
+                  - {label: "Label", name: "label", widget: "string"}
+              - {label: "Badge", name: "badge", widget: "string"}
+
+          - label: "Contact CTA"
+            name: "contact"
+            widget: "object"
+            fields:
+              - {label: "Titre", name: "title", widget: "string"}
+              - {label: "Sous-titre", name: "subtitle", widget: "string"}
+              - {label: "Téléphone (affiché)", name: "phone", widget: "string"}
+              - {label: "Téléphone (lien)", name: "phone_link", widget: "string"}
+              - {label: "Email", name: "email", widget: "string"}
+
+          - label: "Pied de page"
+            name: "footer"
+            widget: "object"
+            fields:
+              - {label: "Nom de l'entreprise", name: "company_name", widget: "string"}
+              - {label: "Tagline", name: "tagline", widget: "string"}
+              - {label: "Adresse", name: "address", widget: "string"}
+              - {label: "Téléphone", name: "phone", widget: "string"}
+              - {label: "Email", name: "email", widget: "string"}
+              - label: "Services"
+                name: "services"
+                widget: "list"
+                field: {label: "Service", name: "service", widget: "string"}
+              - {label: "Copyright", name: "copyright", widget: "string"}

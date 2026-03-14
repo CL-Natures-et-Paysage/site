@@ -1,0 +1,92 @@
+{
+  "nav": {
+    "logo": "Nature Paysages",
+    "links": [
+      {
+        "label": "Services",
+        "url": "#services"
+      },
+      {
+        "label": "À propos",
+        "url": "#about"
+      },
+      {
+        "label": "Contact",
+        "url": "#contact"
+      }
+    ],
+    "cta": "Devis gratuit"
+  },
+  "hero": {
+    "title": "Transformez votre extérieur en paradis",
+    "subtitle": "Création de jardins, entretien et aménagement paysager",
+    "cta_primary": "Demander un devis",
+    "cta_secondary": "Nos services",
+    "background_image": "https://images.unsplash.com/photo-1558904541-efa843a96f01?w=1920&q=80"
+  },
+  "services": {
+    "title": "Nos Services",
+    "subtitle": "Des solutions complètes pour sublimer et entretenir vos espaces verts",
+    "items": [
+      {
+        "title": "Création de jardin",
+        "description": "Conception sur mesure et aménagement de vos espaces verts selon vos envies."
+      },
+      {
+        "title": "Entretien régulier",
+        "description": "Tonte, taille et maintenance pour un jardin toujours impeccable."
+      },
+      {
+        "title": "Aménagement paysager",
+        "description": "Terrasses, allées, bassins et éléments décoratifs pour sublimer vos extérieurs."
+      },
+      {
+        "title": "Soins des arbres",
+        "description": "Taille, élague et soins phytosanitaires pour la santé de vos arbres."
+      }
+    ]
+  },
+  "about": {
+    "title": "À propos de Nature Paysages",
+    "paragraphs": [
+      "Passionnés par la nature depuis plus de 15 ans, nous accompagnons les particuliers et professionnels dans la transformation de leurs espaces extérieurs.",
+      "Notre équipe de jardiniers paysagistes qualifiés met son expertise au service de vos projets, dans le respect de l'environnement et des écosystèmes locaux."
+    ],
+    "stats": [
+      {
+        "value": "15+",
+        "label": "Années d'expérience"
+      },
+      {
+        "value": "500+",
+        "label": "Jardins créés"
+      },
+      {
+        "value": "100%",
+        "label": "Satisfaction"
+      }
+    ],
+    "badge": "15 ans d'expertise"
+  },
+  "contact": {
+    "title": "Prêt à transformer votre extérieur ?",
+    "subtitle": "Contactez-nous pour une consultation gratuite et personnalisée",
+    "phone": "01 23 45 67 89",
+    "phone_link": "+33123456789",
+    "email": "contact@naturepaysages.fr"
+  },
+  "footer": {
+    "company_name": "Nature Paysages",
+    "tagline": "Création et entretien de jardins depuis 2010",
+    "address": "75001 Paris",
+    "phone": "01 23 45 67 89",
+    "email": "contact@naturepaysages.fr",
+    "services": [
+      "Création de jardin",
+      "Entretien régulier",
+      "Aménagement paysager",
+      "Soins des arbres"
+    ],
+    "copyright": "Tous droits réservés."
+  }
+}

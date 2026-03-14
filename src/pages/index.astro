@@ -1,17 +1,157 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import homepageData from '../data/homepage.json';
 
+const { nav, hero, services, about, contact, footer } = homepageData;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Nature Paysages - Création et entretien de jardins">
+	<!-- Navigation -->
+	<nav class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="flex justify-between items-center h-16">
+				<div class="text-2xl font-bold text-green-700">{nav.logo}</div>
+				<div class="hidden md:flex space-x-8">
+					{nav.links.map((link) => (
+						<a href={link.url} class="text-gray-700 hover:text-green-700 transition">{link.label}</a>
+					))}
+				</div>
+				<a href="#contact" class="bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-800 transition">
+					{nav.cta}
+				</a>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Hero Section -->
+	<section class="relative h-screen flex items-center justify-center">
+		<div class="absolute inset-0 bg-gradient-to-r from-green-900/80 to-green-700/80"></div>
+		<div class="absolute inset-0 bg-cover bg-center" style={`background-image: url('${hero.background_image}')`}></div>
+		<div class="relative z-10 text-center text-white px-4">
+			<h1 class="text-4xl md:text-6xl font-bold mb-6">{hero.title}</h1>
+			<p class="text-xl md:text-2xl mb-8 text-green-100">{hero.subtitle}</p>
+			<div class="flex flex-col sm:flex-row gap-4 justify-center">
+				<a href="#contact" class="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition">
+					{hero.cta_primary}
+				</a>
+				<a href="#services" class="bg-white/20 backdrop-blur text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white/30 transition">
+					{hero.cta_secondary}
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Services Section -->
+	<section id="services" class="py-20 bg-gray-50">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center mb-16">
+				<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{services.title}</h2>
+				<p class="text-lg text-gray-600 max-w-2xl mx-auto">
+					{services.subtitle}
+				</p>
+			</div>
+			<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+				{services.items.map((service, index) => (
+					<div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+						<div class={`h-48 flex items-center justify-center ${
+							index === 0 ? 'bg-gradient-to-br from-green-500 to-green-700' :
+							index === 1 ? 'bg-gradient-to-br from-emerald-500 to-emerald-700' :
+							index === 2 ? 'bg-gradient-to-br from-teal-500 to-teal-700' :
+							'bg-gradient-to-br from-green-400 to-green-600'
+						}`}>
+							<svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+							</svg>
+						</div>
+						<div class="p-6">
+							<h3 class="text-xl font-semibold text-gray-900 mb-2">{service.title}</h3>
+							<p class="text-gray-600">{service.description}</p>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- About Section -->
+	<section id="about" class="py-20 bg-white">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="grid md:grid-cols-2 gap-12 items-center">
+				<div>
+					<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{about.title}</h2>
+					{about.paragraphs.map((paragraph) => (
+						<p class="text-lg text-gray-600 mb-6">{paragraph}</p>
+					))}
+					<div class="grid grid-cols-3 gap-6 text-center">
+						{about.stats.map((stat) => (
+							<div>
+								<div class="text-3xl font-bold text-green-700">{stat.value}</div>
+								<div class="text-gray-600">{stat.label}</div>
+							</div>
+						))}
+					</div>
+				</div>
+				<div class="relative">
+					<div class="aspect-square rounded-2xl overflow-hidden shadow-2xl">
+						<div class="w-full h-full bg-gradient-to-br from-green-600 to-green-800 flex items-center justify-center">
+							<svg class="w-32 h-32 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+							</svg>
+						</div>
+					</div>
+					<div class="absolute -bottom-6 -left-6 bg-green-700 text-white p-6 rounded-xl shadow-lg">
+						<div class="text-4xl font-bold">{about.badge.split(' ')[0]}</div>
+						<div class="text-green-100">ans d'expertise</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact CTA Section -->
+	<section id="contact" class="py-20 bg-green-700">
+		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+			<h2 class="text-3xl md:text-4xl font-bold text-white mb-6">{contact.title}</h2>
+			<p class="text-xl text-green-100 mb-8">
+				{contact.subtitle}
+			</p>
+			<div class="flex flex-col sm:flex-row gap-4 justify-center">
+				<a href={`tel:${contact.phone_link}`} class="bg-white text-green-700 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition">
+					📞 {contact.phone}
+				</a>
+				<a href={`mailto:${contact.email}`} class="bg-green-600 text-white border-2 border-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-500 transition">
+					✉️ Envoyer un email
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer class="bg-gray-900 text-white py-12">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="grid md:grid-cols-3 gap-8">
+				<div>
+					<h3 class="text-2xl font-bold text-green-400 mb-4">{footer.company_name}</h3>
+					<p class="text-gray-400">{footer.tagline}</p>
+				</div>
+				<div>
+					<h4 class="text-lg font-semibold mb-4">Contact</h4>
+					<p class="text-gray-400">📍 {footer.address}</p>
+					<p class="text-gray-400">📞 {footer.phone}</p>
+					<p class="text-gray-400">✉️ {footer.email}</p>
+				</div>
+				<div>
+					<h4 class="text-lg font-semibold mb-4">Nos services</h4>
+					<ul class="space-y-2 text-gray-400">
+						{footer.services.map((service) => (
+							<li>{service}</li>
+						))}
+					</ul>
+				</div>
+			</div>
+			<div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
+				<p>&copy; 2026 {footer.company_name}. {footer.copyright}</p>
+			</div>
+		</div>
+	</footer>
+</Layout>
