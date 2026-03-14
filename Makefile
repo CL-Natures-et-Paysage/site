@@ -13,3 +13,5 @@ up:
 
 npm_install:
 	docker compose exec app npm install
+
+# npx decap-server
